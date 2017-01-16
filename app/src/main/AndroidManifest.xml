@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.acdemo.hashsearch">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".HashApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateUnchanged">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="474371698edee56f71c7affcb1d87ef21a280f08" />
+        <meta-data android:name="AA_DB_NAME" android:value="tweetsList.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+
+    </application>
+
+</manifest>

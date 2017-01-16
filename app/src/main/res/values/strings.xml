@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Hash Search</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_search">Search</string>
+    <string name="nav_search_sub">Search trending hash tags</string>
+
+    <string name="nav_history">History</string>
+    <string name="nav_history_sub">View past search results</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="refresh_search">Updated Search Results with Latest Tweets</string>
+    <string name="header_top_results">Top Results</string>
+    <string name="header_more_results">More Results</string>
+</resources>

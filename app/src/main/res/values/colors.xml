@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#13b3ca</color>
+    <color name="colorPrimaryDark">#1faab4</color>
+    <color name="colorAccent">#1365ca</color>
+
+    <color name="nav_bkg_selected">#a3c7cc</color>
+    <color name="nav_bkg_pressed">#1faab4</color>
+</resources>

@@ -9,20 +9,20 @@ The last search results for any particular hashtag will always be available in t
 
 Running the application from code
 ----------------------------------------------
-1) Clone Git Repository to local machine
-2) Run Android Studio IDE
-3) Open repository location
-4) Connect Android device or Run Emulator
-5) Build and Run Application
+1) Clone Git Repository to local machine  
+2) Run Android Studio IDE  
+3) Open repository location  
+4) Connect Android device or Run Emulator  
+5) Build and Run Application  
 
 
 Running the application from apk file
 ----------------------------------------------
-1) Download the application file here:https://github.com/leomenendez/HashSearch/raw/master/HashSearch.apk
-2) Transfer the application to the device storage (alternatively you can download directly to a device)
-3) Ensure that the device can install applications from unknown sources in device settings
-4) Use a File Browser Application to locate the downloaded file
-5) Install the Application
+1) Download the application file here:https://github.com/leomenendez/HashSearch/raw/master/HashSearch.apk  
+2) Transfer the application to the device storage (alternatively you can download directly to a device)  
+3) Ensure that the device can install applications from unknown sources in device settings  
+4) Use a File Browser Application to locate the downloaded file  
+5) Install the Application  
 
 
 

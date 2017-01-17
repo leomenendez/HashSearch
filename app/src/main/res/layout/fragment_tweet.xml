@@ -31,16 +31,26 @@
                     android:padding="8dp"
                     android:scaleType="centerCrop"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="4dp"
-                    android:background="@color/colorPrimaryDark"/>
             </LinearLayout>
-            <LinearLayout
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:id="@+id/tweet_text"
+                android:layout_margin="4dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:text="test tweet text "/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="4dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp">
 
                 <com.acdemo.hashsearch.views.CircleImageView
@@ -53,7 +63,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_alignTop="@id/user_image"
+                    android:layout_alignBottom="@id/user_image"
+                    android:layout_toRightOf="@id/user_image"
+                    android:layout_toLeftOf="@+id/verified_user"
+                    android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:id="@+id/user_name"
                     android:text="Test Username"
@@ -62,20 +76,106 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
                     android:src="@drawable/star_user"
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/verified_user"
-                    android:visibility="gone"/>
+                    android:visibility="visible"
+                    android:layout_alignParentRight="true"/>
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/user_name"
+                    android:layout_below="@id/user_name"
+                    android:layout_marginTop="4dp"
+                    android:paddingLeft="16dp"
+                    android:id="@+id/user_handle"
+                    android:text="\@screenname"
+                    android:textSize="16dp"
+                    />
 
-            <TextView
+            </RelativeLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tweet_text"
-                android:layout_marginTop="16dp"
-                android:textSize="16sp"
-                android:text="test tweet text "/>
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:padding="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/followers"
+                            android:gravity="center_horizontal"
+                            android:textSize="14dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/follower_count"
+                            android:gravity="center_horizontal"
+                            android:layout_marginTop="8dp"
+                            android:text="44444"
+                            android:textStyle="bold"
+                            android:textSize="24dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tweets"
+                        android:gravity="center_horizontal"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tweet_count"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="44444"
+                        android:textStyle="bold"
+                        android:textSize="24dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friends"
+                        android:gravity="center_horizontal"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/friends_count"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="44444"
+                        android:textStyle="bold"
+                        android:textSize="24dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

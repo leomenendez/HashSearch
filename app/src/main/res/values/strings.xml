@@ -14,4 +14,9 @@
     <string name="refresh_search">Updated Search Results with Latest Tweets</string>
     <string name="header_top_results">Top Results</string>
     <string name="header_more_results">More Results</string>
+
+    <string name="search_hint">Enter Hashtag</string>
+    <string name="followers">Followers</string>
+    <string name="tweets">Tweets</string>
+    <string name="friends">Friends</string>
 </resources>

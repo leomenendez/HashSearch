@@ -48,10 +48,9 @@
                 android:layout_margin="4dp"
                 android:background="@color/colorPrimaryDark"/>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
                 <com.acdemo.hashsearch.views.CircleImageView
@@ -62,10 +61,13 @@
                     android:scaleType="centerCrop"/>
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
+                    android:layout_alignTop="@id/user_image"
+                    android:layout_alignBottom="@id/user_image"
+                    android:layout_toRightOf="@id/user_image"
+                    android:layout_toLeftOf="@+id/verified_user"
+                    android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:id="@+id/user_name"
                     android:text="Test Username"
@@ -74,11 +76,25 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
                     android:src="@drawable/star_user"
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/verified_user"
-                    android:visibility="gone"/>
-            </LinearLayout>
+                    android:visibility="visible"
+                    android:layout_alignParentRight="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/user_name"
+                    android:layout_below="@id/user_name"
+                    android:layout_marginTop="4dp"
+                    android:paddingLeft="16dp"
+                    android:id="@+id/user_handle"
+                    android:text="\@screenname"
+                    android:textSize="16dp"
+                    />
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"

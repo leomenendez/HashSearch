@@ -21,7 +21,7 @@ public class TweetFragment extends Fragment implements View.OnClickListener {
 
     public View mediaContent;
     public ImageView userImage, mediaView, verifiedUser;
-    public TextView userName, tweetText, timeStamp;
+    public TextView userName, tweetText, timeStamp, userHandle, followerCount, tweetCount, friendCount;
     
     private Tweets tweet;
 
@@ -45,6 +45,10 @@ public class TweetFragment extends Fragment implements View.OnClickListener {
         tweetText = (TextView) view.findViewById(R.id.tweet_text);
         timeStamp = (TextView) view.findViewById(R.id.time_stamp);
         verifiedUser = (ImageView) view.findViewById(R.id.verified_user);
+        userHandle = (TextView) view.findViewById(R.id.user_handle);
+        followerCount = (TextView) view.findViewById(R.id.follower_count);
+        tweetCount = (TextView) view.findViewById(R.id.tweet_count);
+        friendCount = (TextView) view.findViewById(R.id.friends_count);
 
         if(icicle==null)
             icicle = getArguments();
@@ -77,9 +81,13 @@ public class TweetFragment extends Fragment implements View.OnClickListener {
                 .load(tweet.getUser().getImageURL())
                 .asBitmap()
                 .into(userImage);
-        userName.setText(tweet.getUser().getScreenName());
+        userName.setText(tweet.getUser().getName());
         tweetText.setText(tweet.getText());
         timeStamp.setText(tweet.getTimeStamp());
+        userHandle.setText(tweet.getUser().getScreenName());
+        followerCount.setText(String.valueOf(tweet.getUser().getFollowerCount()));
+        tweetCount.setText(String.valueOf(tweet.getUser().getTweetCount()));
+        friendCount.setText(String.valueOf(tweet.getUser().getFriendCount()));
 
     }
     

@@ -93,10 +93,10 @@ public class TweetSearchAdapter extends RecyclerView.Adapter<TweetViewHolder> {
                 .load(tweet.getUser().getImageURL())
                 .asBitmap()
                 .into(holder.userImage);
-        holder.userName.setText(tweet.getUser().getScreenName());
+        holder.userName.setText(tweet.getUser().getName());
         holder.tweetText.setText(tweet.getText());
         holder.timeStamp.setText(tweet.getTimeStamp());
-
+        holder.userHandle.setText("@"+tweet.getUser().getScreenName());
         holder.setTag(listPosition);
     }
 

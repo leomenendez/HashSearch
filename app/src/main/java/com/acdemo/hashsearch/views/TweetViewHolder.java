@@ -14,7 +14,7 @@ import com.acdemo.hashsearch.R;
 public class TweetViewHolder extends RecyclerView.ViewHolder {
     public View mediaContent;
     public ImageView userImage, mediaView, verifiedUser;
-    public TextView userName, tweetText, timeStamp, headerTitle;
+    public TextView userName, userHandle, tweetText, timeStamp, headerTitle;
 
     private View itemView;
 
@@ -28,6 +28,7 @@ public class TweetViewHolder extends RecyclerView.ViewHolder {
         timeStamp = (TextView) itemView.findViewById(R.id.time_stamp);
         headerTitle = (TextView) itemView.findViewById(R.id.header_title);
         verifiedUser = (ImageView) itemView.findViewById(R.id.verified_user);
+        userHandle = (TextView) itemView.findViewById(R.id.user_handle);
 
         this.itemView = itemView;
     }

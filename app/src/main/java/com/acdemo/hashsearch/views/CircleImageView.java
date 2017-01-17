@@ -28,7 +28,7 @@ import static android.graphics.PorterDuff.Mode.SRC_IN;
  * Created by leo on 1/14/17.
  */
 
-class CircleImageView extends ImageView {
+public class CircleImageView extends ImageView {
 
     private static final int KEY_SHADOW_COLOR = 0x1E000000;
     private static final int FILL_SHADOW_COLOR = 0x3D000000;

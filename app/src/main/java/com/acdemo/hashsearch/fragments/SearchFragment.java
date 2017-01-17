@@ -26,6 +26,7 @@ import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
+import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Collections;
@@ -55,9 +56,11 @@ public class SearchFragment extends Fragment implements OnRecycleItemClickListen
     private Handler handler = new Handler();
 
     private boolean stopRefresh = false;
+    private boolean showDrawer = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle icicle){
+        setRetainInstance(true);
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
@@ -96,20 +99,43 @@ public class SearchFragment extends Fragment implements OnRecycleItemClickListen
         });
 
         stopRefresh = false;
-        if(icicle == null)
+        if(icicle == null) {
             icicle = getArguments();
+
+            if (icicle != null) {
+                tweetsList = (List<Tweets>) icicle.getSerializable("tweets");
+                if (tweetsList != null) {
+                    Collections.sort(tweetsList, new TweetCompare());
+                    stopRefresh = true;
+                    showDrawer = false;
+                    searchView.setVisibility(View.GONE);
+                }
+            }
+        }
+
+        ((SearchActivity) getActivity()).getToggle().setDrawerIndicatorEnabled(showDrawer);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle icicle){
+        if(icicle==null)
+            icicle = new Bundle();
+        icicle.putSerializable("tweets", (Serializable) tweetsList);
+        icicle.putBoolean("showDrawer", showDrawer);
+        super.onSaveInstanceState(icicle);
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle icicle){
+        super.onViewStateRestored(icicle);
 
         if(icicle!=null){
             tweetsList = (List<Tweets>) icicle.getSerializable("tweets");
-            Collections.sort(tweetsList, new TweetCompare());
-            if(tweetsList!=null) {
-                stopRefresh = true;
-                ((SearchActivity) getActivity()).getToggle().setDrawerIndicatorEnabled(false);
-                searchView.setVisibility(View.GONE);
-                return;
-            }
+            showDrawer = icicle.getBoolean("showDrawer");
+
+            ((SearchActivity) getActivity()).getToggle().setDrawerIndicatorEnabled(showDrawer);
+
         }
-        ((SearchActivity) getActivity()).getToggle().setDrawerIndicatorEnabled(true);
     }
 
     @Override

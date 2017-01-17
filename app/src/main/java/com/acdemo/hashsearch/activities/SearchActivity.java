@@ -32,9 +32,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     public static final String TAG = SearchActivity.class.getSimpleName();
 
+    public static final String HOME_FRAGMENT_TAG = "home_fragment";
+
     private List<View> navigationViews = new LinkedList<>();
     private DrawerLayout drawer;
-    private String homeFragment;
+    private Fragment homeFragment;
 
     private ActionBarDrawerToggle toggle;
 
@@ -64,7 +66,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         initNavigation();
 
-        setHomeFragment(new SearchFragment());
+        homeFragment = getSupportFragmentManager().findFragmentByTag(HOME_FRAGMENT_TAG);
+        if(homeFragment == null)
+            setHomeFragment(new SearchFragment());
     }
 
     @Override
@@ -110,10 +114,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void setHomeFragment(Fragment fragment){
-        homeFragment = fragment.getClass().getSimpleName();
+        homeFragment = fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content, fragment, homeFragment);
+        transaction.replace(R.id.content, fragment, HOME_FRAGMENT_TAG);
         transaction.commit();
     }
 
@@ -153,11 +157,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         v.setSelected(true);
         switch (v.getId()){
             case R.id.btn_search:
-                if(!homeFragment.equals(SearchFragment.class.getSimpleName()))
+                if(!(homeFragment instanceof SearchFragment))
                     setHomeFragment(new SearchFragment());
                 break;
             case R.id.btn_history:
-                if(!homeFragment.equals(HistoryFragment.class.getSimpleName()))
+                if(!(homeFragment instanceof HistoryFragment))
                     setHomeFragment(new HistoryFragment());
                 break;
         }

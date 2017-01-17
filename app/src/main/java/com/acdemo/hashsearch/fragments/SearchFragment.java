@@ -22,6 +22,9 @@ import com.acdemo.hashsearch.models.TweetCompare;
 import com.acdemo.hashsearch.models.Tweets;
 import com.acdemo.hashsearch.network.TwitterWebServiceFactory;
 import com.acdemo.hashsearch.network.WebServiceConnection;
+import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
 import java.net.URLEncoder;
 import java.util.Calendar;
@@ -190,18 +193,26 @@ public class SearchFragment extends Fragment implements OnRecycleItemClickListen
     }
 
     private void persistResponse(final SearchResponse searchResponse){
-//        Thread sqlThread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                new Delete().from(SearchResponse.class).where("searchUniqueID = ?", searchQuery).execute();
+        String saveQuery = getFormattedTags(searchQuery).replace("+", ", ");
 
-                searchResponse.setSearchID(getFormattedTags(searchQuery).replace("+", ", "));
-                searchResponse.setDate(Calendar.getInstance().getTime().toString());
-                searchResponse.saveAll();
-//            }
-//        });
-//        sqlThread.start();
+        ActiveAndroid.beginTransaction();
+        try {
+            SearchResponse persistResponse = new Select().from(SearchResponse.class).where("searchUniqueID = ?", saveQuery).executeSingle();
+            if (persistResponse == null)
+                persistResponse = searchResponse;
+            else {
+                new Delete().from(Tweets.class).where("Search = ?", persistResponse.getId()).execute();
+                persistResponse.setTweetsList(searchResponse.getTweetsList());
+                persistResponse.setSearchMetaData(searchResponse.getSearchMetaData());
+            }
+            persistResponse.setSearchID(saveQuery);
+            persistResponse.setDate(Calendar.getInstance().getTime().toString());
+            persistResponse.saveAll();
 
+            ActiveAndroid.setTransactionSuccessful();
+        }finally {
+            ActiveAndroid.endTransaction();
+        }
     }
 
     private String getFormattedTags(String searchString){
@@ -215,6 +226,8 @@ public class SearchFragment extends Fragment implements OnRecycleItemClickListen
                 builder.append("+");
         }
         return builder.toString();
+
+
     }
 
 }

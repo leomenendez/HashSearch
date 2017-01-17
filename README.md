@@ -18,7 +18,7 @@ Running the application from code
 
 Running the application from apk file
 ----------------------------------------------
-1) Download the application file here:
+1) Download the application file here:https://github.com/leomenendez/HashSearch/raw/master/HashSearch.apk
 2) Transfer the application to the device storage (alternatively you can download directly to a device)
 3) Ensure that the device can install applications from unknown sources in device settings
 4) Use a File Browser Application to locate the downloaded file
